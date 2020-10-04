@@ -1,5 +1,31 @@
 // Question Link ---> https://leetcode.com/problems/my-calendar-ii/
 
+// Initial Solution (GOT Memory Limit Exceeded)
+class MyCalendarTwo {
+private:
+    char ranges[1000000001];
+public:
+    MyCalendarTwo() {
+        memset(ranges, '0', sizeof(ranges));
+    }
+    bool book(int start, int end) {
+        // First We Check Overlap Cases
+        for (int i = start; i < end; i++) {
+            if (ranges[i] == '2') {
+                return false;
+            }
+        }
+        // Update Array
+        for (int i = start; i < end; i++) {
+            ranges[i] += 1;
+        }
+        return true;
+    }
+};
+
+
+
+// Accepted Brute-Force Solution
 class MyCalendarTwo {
 private:
     vector<vector<int>> singleBookings, doubleBookings;
