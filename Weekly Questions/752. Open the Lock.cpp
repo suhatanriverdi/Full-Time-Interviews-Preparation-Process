@@ -9,6 +9,9 @@ public:
         if (deadendsSet.find("0000") != deadendsSet.end()) {
             return -1;
         }
+        if (target == "0000") {
+            return 0;
+        }
         queue<string> wheelQueue;
         wheelQueue.push("0000");
         visited.insert("0000");
