@@ -1,5 +1,27 @@
 // Question Link ---> https://leetcode.com/problems/symmetric-tree/
 
+// Recursive Solution
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        return symmetricHelper(root, root);
+    }
+    
+    bool symmetricHelper(TreeNode* a, TreeNode* b) {
+        if (a == NULL && b == NULL) {
+            return true;
+        }
+        if (a && !b || !a && b) {
+            return false;
+        }
+        if (a && b && a->val != b->val) {
+            return false;
+        }
+        return symmetricHelper(a->left, b->right) && symmetricHelper(a->right, b->left);
+    }
+};
+
+// Iterative BFS Solution
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
